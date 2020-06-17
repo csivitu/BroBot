@@ -18,6 +18,7 @@ from telegram.ext import ConversationHandler
 from github import Github
 import threading
 import random
+import string
 
 sessions = {}
 
@@ -75,7 +76,9 @@ def sms(update, number):
 
 
 def askmsg(update, context):
-    sessions[update.message.from_user.id] = update.message.text
+    sessions[update.message.from_user.id] = update.message.text.translate(
+        {ord(i): None for i in string.whitespace}
+    )
     update.message.reply_text(askm, reply_markup=ForceReply())
     return 1
 
