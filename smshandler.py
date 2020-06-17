@@ -5,22 +5,19 @@ from text import (
     repopath,
     filename,
     textapi,
-    proxyapi,
     textkey,
-    proxyregex,
     sendingfail,
     errmsg,
     smssuccess,
 )
-import requests
-from re import findall
 from telegram import ForceReply
 from telegram.ext import ConversationHandler
 from github import Github
 import threading
-import random
 import string
+import requests
 import os
+import proxyscrape
 
 sessions = {}
 
@@ -53,28 +50,18 @@ def asknum(update, context):
 def sms(update, number):
     key = textkey
     message = update.message.text
-    r = requests.get(proxyapi)
-    matches = findall(proxyregex, r.text)
-    revised = [m.replace("<td>", "") for m in matches]
-    sockets = [f"{s.split('</td>')[0]}:{s.split('</td>')[1]}" for s in revised]
-    random.shuffle(sockets)
-    gotresp = False
-    for i in sockets:
+    while True:
         try:
+            i = proxyscrape.create_collector("default", "http").get_proxy()
             resp = requests.post(
                 textapi,
                 {"phone": number, "message": message, "key": key,},
-                proxies={"http": f"http://{i}"},
+                proxies={"http": f"http://{i.host}:{i.port}"},
                 timeout=60,
             ).json()
-            gotresp = True
             break
         except BaseException:
             pass
-    if not gotresp:
-        resp = requests.post(
-            textapi, {"phone": number, "message": message, "key": key,},
-        ).json()
     if resp["success"]:
         update.message.reply_text(smssuccess)
     else:

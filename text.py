@@ -38,11 +38,9 @@ jokeapis = [
     "https://api.icndb.com/jokes/random?escape=javascript",
 ]
 emptyoutput = "No Output!"
-proxyapi = "https://www.sslproxies.org/"
 sendingfail = "Could not send the SMS! Please, try again after 24 hours."
 smssuccess = "SMS sent successfully!"
 textkey = "textbelt"
-proxyregex = r"<td>\d+\.\d+\.\d+\.\d+</td><td>\d+</td>"
 textapi = "http://textbelt.com/text/"
 notadmin = "You are not authorized to use this feature! Request access by submitting a pull request to https://github.com/alias-rahil/admin-list.git/."
 coronaapi = "https://pomber.github.io/covid19/timeseries.json"
