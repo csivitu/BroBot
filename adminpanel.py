@@ -15,30 +15,14 @@ import os
 
 
 def adminpanel(update, contex):
-    adminlist = (
-        Github()
-        .get_repo(repopath)
-        .get_contents(filename)
-        .decoded_content.decode()
-        .strip()
-        .split("\n")
+    options = [["List Admins"], ["Add Admin"], ["Remove Admin"]]
+    update.message.reply_text(
+        "Please select an option:",
+        reply_markup=ReplyKeyboardMarkup(
+            options, one_time_keyboard=True, resize_keyboard=True
+        ),
     )
-    if str(
-        update.message.from_user.id
-    ) in adminlist or update.message.from_user.username.lower() in [
-        i.lower() for i in adminlist
-    ]:
-        options = [["List Admins"], ["Add Admin"], ["Remove Admin"]]
-        update.message.reply_text(
-            "Please select an option:",
-            reply_markup=ReplyKeyboardMarkup(
-                options, one_time_keyboard=True, resize_keyboard=True
-            ),
-        )
-        return 0
-    else:
-        update.message.reply_text(notadmin)
-        return ConversationHandler.END
+    return 0
 
 
 def adminoptions(update, context):
@@ -53,11 +37,44 @@ def adminoptions(update, context):
         )
         return ConversationHandler.END
     elif option == "Add Admin":
-        update.message.reply_text(askid, reply_markup=ForceReply())
-        return 1
+        adminlist = (
+            Github()
+            .get_repo(repopath)
+            .get_contents(filename)
+            .decoded_content.decode()
+            .strip()
+            .split("\n")
+        )
+        if str(
+            update.message.from_user.id
+        ) in adminlist or update.message.from_user.username.lower() in [
+            i.lower() for i in adminlist
+        ]:
+            update.message.reply_text(askid, reply_markup=ForceReply())
+            return 1
+        else:
+            update.message.reply_text(notadmin)
+            return ConversationHandler.END
+
     else:
-        update.message.reply_text(askid, reply_markup=ForceReply())
-        return 2
+        adminlist = (
+            Github()
+            .get_repo(repopath)
+            .get_contents(filename)
+            .decoded_content.decode()
+            .strip()
+            .split("\n")
+        )
+        if str(
+            update.message.from_user.id
+        ) in adminlist or update.message.from_user.username.lower() in [
+            i.lower() for i in adminlist
+        ]:
+            update.message.reply_text(askid, reply_markup=ForceReply())
+            return 2
+        else:
+            update.message.reply_text(notadmin)
+            return ConversationHandler.END
 
 
 def addadmin(update, context):
