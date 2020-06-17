@@ -7,23 +7,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo">
+  <a href="https://github.com/csivitu/BroBot">
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">BroBot</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
     <br />
-    <a href="https://github.com/github_username/repo"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/csivitu/BroBot"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo">View Demo</a>
+    <a href="https://github.com/csivitu/BroBot">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo/issues">Report Bug</a>
+    <a href="https://github.com/csivitu/BroBot/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo/issues">Request Feature</a>
+    <a href="https://github.com/csivitu/BroBot/issues">Request Feature</a>
   </p>
 </p>
 
@@ -48,18 +48,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![BroBot][https://github.com/csivitu/BroBot/blob/master/screenshots/brobot.jpg?raw=true]](https://telegram.me/devspace_brobot)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo`, `twitter_handle`, `email`
+A telegram ChatBot for entertainment and getting CSIVIT event updates!
 
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [python](https://www.python.org/downloads/latest)
+* [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
 
 
 
@@ -70,21 +67,22 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+* python
 ```sh
-npm install npm@latest -g
+sudo apt update
+sudo apt install python3 python3-pip -y
 ```
 
 ### Installation
  
 1. Clone the repo
 ```sh
-git clone https://github.com/github_username/repo.git
+git clone https://github.com/csivitu/BroBot.git
+cd BroBot
 ```
-2. Install NPM packages
+2. Install pip packages
 ```sh
-npm install
+pip3 install -r requirements.txt
 ```
 
 
@@ -92,16 +90,39 @@ npm install
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+# Get coronavirus updates
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+![covid-19.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/covid-19.jpg?raw=true)
 
+# Get your ChatID
+
+![chatid.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/chatid.jpg?raw=true)
+
+# Get memes and jokes
+
+![memes-N-jokes.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/memes-N-jokes.jpg?raw=true)
+
+# Send a free SMS
+
+![sms.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/sms.jpg?raw=true)
+
+_Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
+
+# Run shell commands
+
+![shell.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/shell.jpg?raw=true)
+
+_Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
+
+# Chat with it when bored or make it do your Math homework
+
+![chat.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/chat.jpg?raw=true)
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/csivitu/brobot/issues) for a list of proposed features (and known issues).
 
 
 
