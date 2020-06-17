@@ -26,6 +26,7 @@ subreddits = [
     "teenagers",
     "PewdiepieSubmissions",
 ]
+errmsg = "Internal error! Please try again later!"
 jokeapis = [
     "https://sv443.net/jokeapi/v2/joke/any",
     "https://sv443.net/jokeapi/v2/joke/dark",
@@ -37,7 +38,7 @@ jokeapis = [
     "https://api.icndb.com/jokes/random?escape=javascript",
 ]
 emptyoutput = "No Output!"
-proxyapi = "https://www.sslproxies.org/"
+proxyapi = "https://free-proxy-list.net/"
 sendingfail = "Could not send the SMS! Please, try again after 24 hours."
 smssuccess = "SMS sent successfully!"
 textkey = "textbelt"

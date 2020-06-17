@@ -6,6 +6,7 @@ from text import (
     repopath,
     filename,
     alreadyremoved,
+    errmsg,
     removesuccess,
 )
 from telegram.ext import ConversationHandler
@@ -28,103 +29,125 @@ def adminpanel(update, contex):
 def adminoptions(update, context):
     option = update.message.text
     if option == "List Admins":
-        update.message.reply_text(
-            Github()
-            .get_repo(repopath)
-            .get_contents(filename)
-            .decoded_content.decode()
-            .strip()
-        )
-        return ConversationHandler.END
+        try:
+            update.message.reply_text(
+                Github(os.getenv("API"))
+                .get_repo(repopath)
+                .get_contents(filename)
+                .decoded_content.decode()
+                .strip()
+            )
+            return ConversationHandler.END
+        except BaseException:
+            update.message.reply_text(errmsg)
+            return ConversationHandler.END
+
     elif option == "Add Admin":
-        adminlist = (
-            Github()
-            .get_repo(repopath)
-            .get_contents(filename)
-            .decoded_content.decode()
-            .strip()
-            .split("\n")
-        )
-        if str(
-            update.message.from_user.id
-        ) in adminlist or update.message.from_user.username.lower() in [
-            i.lower() for i in adminlist
-        ]:
-            update.message.reply_text(askid, reply_markup=ForceReply())
-            return 1
-        else:
-            update.message.reply_text(notadmin)
+        try:
+            adminlist = (
+                Github(os.getenv("API"))
+                .get_repo(repopath)
+                .get_contents(filename)
+                .decoded_content.decode()
+                .strip()
+                .split("\n")
+            )
+            if str(
+                update.message.from_user.id
+            ) in adminlist or update.message.from_user.username.lower() in [
+                i.lower() for i in adminlist
+            ]:
+                update.message.reply_text(askid, reply_markup=ForceReply())
+                return 1
+            else:
+                update.message.reply_text(notadmin)
+                return ConversationHandler.END
+        except BaseException:
+            update.message.reply_text(errmsg)
             return ConversationHandler.END
 
     else:
-        adminlist = (
-            Github()
-            .get_repo(repopath)
-            .get_contents(filename)
-            .decoded_content.decode()
-            .strip()
-            .split("\n")
-        )
-        if str(
-            update.message.from_user.id
-        ) in adminlist or update.message.from_user.username.lower() in [
-            i.lower() for i in adminlist
-        ]:
-            update.message.reply_text(askid, reply_markup=ForceReply())
-            return 2
-        else:
-            update.message.reply_text(notadmin)
+        try:
+            adminlist = (
+                Github(os.getenv("API"))
+                .get_repo(repopath)
+                .get_contents(filename)
+                .decoded_content.decode()
+                .strip()
+                .split("\n")
+            )
+            if str(
+                update.message.from_user.id
+            ) in adminlist or update.message.from_user.username.lower() in [
+                i.lower() for i in adminlist
+            ]:
+                update.message.reply_text(askid, reply_markup=ForceReply())
+                return 2
+            else:
+                update.message.reply_text(notadmin)
+                return ConversationHandler.END
+        except BaseException:
+            update.message.reply_text(errmsg)
             return ConversationHandler.END
 
 
 def addadmin(update, context):
-    adminlist = [
-        i.lower()
-        for i in Github()
-        .get_repo(repopath)
-        .get_contents(filename)
-        .decoded_content.decode()
-        .strip()
-        .split("\n")
-    ]
-    admin = update.message.text.lower()
-    if admin in adminlist:
-        update.message.reply_text(admin + " " + alreadyadmin)
-    else:
+    try:
         g = Github(os.getenv("API"))
-        repo = g.get_repo(repopath)
-        contents = repo.get_contents(filename)
-        adminlist.append(admin)
-        repo.update_file(
-            contents.path, f"added-{admin}-as-admin", "\n".join(adminlist), contents.sha
-        )
-        update.message.reply_text(admin + " " + addsuccess)
-    return ConversationHandler.END
+        adminlist = [
+            i.lower()
+            for i in g.get_repo(repopath)
+            .get_contents(filename)
+            .decoded_content.decode()
+            .strip()
+            .split("\n")
+        ]
+        admin = update.message.text.lower()
+        if admin in adminlist:
+            update.message.reply_text(admin + " " + alreadyadmin)
+        else:
+            repo = g.get_repo(repopath)
+            contents = repo.get_contents(filename)
+            adminlist.append(admin)
+            repo.update_file(
+                contents.path,
+                f"added-{admin}-as-admin",
+                "\n".join(adminlist),
+                contents.sha,
+            )
+            update.message.reply_text(admin + " " + addsuccess)
+        return ConversationHandler.END
+    except BaseException:
+        update.message.reply_text(errmsg)
+        return ConversationHandler.END
 
 
 def removeadmin(update, context):
-    adminlist = [
-        i.lower()
-        for i in Github()
-        .get_repo(repopath)
-        .get_contents(filename)
-        .decoded_content.decode()
-        .strip()
-        .split("\n")
-    ]
-    admin = update.message.text.lower()
-    if admin not in adminlist:
-        update.message.reply_text(admin + " " + alreadyremoved)
-    else:
+    try:
         g = Github(os.getenv("API"))
-        repo = g.get_repo(repopath)
-        contents = repo.get_contents(filename)
-        adminlist.remove(admin)
-        repo.update_file(
-            contents.path,
-            f"removed-{admin}-as-admin",
-            "\n".join(adminlist),
-            contents.sha,
-        )
-        update.message.reply_text(admin + " " + removesuccess)
-    return ConversationHandler.END
+        adminlist = [
+            i.lower()
+            for i in g.get_repo(repopath)
+            .get_contents(filename)
+            .decoded_content.decode()
+            .strip()
+            .split("\n")
+        ]
+        admin = update.message.text.lower()
+        if admin not in adminlist:
+            update.message.reply_text(admin + " " + alreadyremoved)
+        else:
+            repo = g.get_repo(repopath)
+            contents = repo.get_contents(filename)
+            adminlist.remove(admin)
+            repo.update_file(
+                contents.path,
+                f"removed-{admin}-as-admin",
+                "\n".join(adminlist),
+                contents.sha,
+            )
+            update.message.reply_text(admin + " " + removesuccess)
+        return ConversationHandler.END
+    except BaseException:
+        update.message.reply_text(errmsg)
+        return ConversationHandler.END
