@@ -71,9 +71,9 @@ def sms(update, number):
             textapi, {"phone": number, "message": message, "key": key,},
         ).json()
     if resp["success"]:
-        update.message.reply_text(smssuccess)
+        update.message.reply_text(smssuccess + resp["textId"])
     else:
-        update.message.reply_text(sendingfail)
+        update.message.reply_text(f"{sendingfail} {resp['error']}")
 
 
 def askmsg(update, context):
