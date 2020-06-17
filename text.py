@@ -38,7 +38,7 @@ jokeapis = [
     "https://api.icndb.com/jokes/random?escape=javascript",
 ]
 emptyoutput = "No Output!"
-proxyapi = "https://free-proxy-list.net/"
+proxyapi = "https://www.sslproxies.org/"
 sendingfail = "Could not send the SMS! Please, try again after 24 hours."
 smssuccess = "SMS sent successfully!"
 textkey = "textbelt"
