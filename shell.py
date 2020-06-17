@@ -8,6 +8,7 @@ from text import (
     keyapi,
 )
 from telegram.ext import ConversationHandler
+from telegram import ForceReply
 import subprocess
 import threading
 import time
@@ -67,7 +68,7 @@ def shellsession(update, context):
         shellsessions[update.message.from_user.id].append(
             shellsessions[update.message.from_user.id][2]
         )
-        update.message.reply_text(shellmsg)
+        update.message.reply_text(shellmsg, reply_markup=ForceReply())
         return 0
     else:
         update.message.reply_text(notadmin)
@@ -99,22 +100,26 @@ def runcommand(update, context):
         )
         shellsessions[update.message.from_user.id][0].stdin.flush()
         time.sleep(2)
-        text = shellsessions[update.message.from_user.id][2].replace(
-            shellsessions[update.message.from_user.id][4], "", 1
+        text = ansistrip.ansi_strip(
+            shellsessions[update.message.from_user.id][2].replace(
+                shellsessions[update.message.from_user.id][4], "", 1
+            )
         )
         shellsessions[update.message.from_user.id][4] = shellsessions[
             update.message.from_user.id
         ][2]
-        update.message.reply_text(ansistrip.ansi_strip(text))
+        if shellsessions[update.message.from_user.id][0].poll() is None:
+            update.message.reply_text(text, reply_markup=ForceReply())
+            return 0
+        else:
+            update.message.reply_text(text)
+            del shellsessions[update.message.from_user.id]
+            return ConversationHandler.END
     except BaseException:
-        update.message.reply_text(emptyoutput)
-    if random.choice(
-        [
-            shellsessions[update.message.from_user.id][1],
-            shellsessions[update.message.from_user.id][3],
-        ]
-    ).isAlive():
-        return 0
-    else:
-        del shellsessions[update.message.from_user.id]
-        return ConversationHandler.END
+        if shellsessions[update.message.from_user.id][0].poll() is None:
+            update.message.reply_text(emptyoutput, reply_markup=ForceReply())
+            return 0
+        else:
+            update.message.reply_text(emptyoutput)
+            del shellsessions[update.message.from_user.id]
+            return ConversationHandler.END
