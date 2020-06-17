@@ -58,7 +58,7 @@ def sms(update, number):
                 textapi,
                 {"phone": number, "message": message, "key": key,},
                 proxies={"http": f"http://{i.host}:{i.port}"},
-                timeout=60,
+                timeout=15,
             )
             gotresp = True
             break
