@@ -84,6 +84,10 @@ cd BroBot
 ```sh
 pip3 install -r requirements.txt
 ```
+3. Create a .env file and start the BoT
+```sh
+python3 index.py
+```
 
 
 
