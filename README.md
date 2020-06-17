@@ -48,7 +48,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![BroBot][https://github.com/csivitu/BroBot/blob/master/screenshots/brobot.jpg?raw=true]](https://telegram.me/devspace_brobot)
+[![BroBot][./screenshots/brobot.jpg?raw=true]](https://telegram.me/devspace_brobot)
 
 A telegram ChatBot for entertainment and getting CSIVIT event updates!
 
@@ -92,31 +92,31 @@ pip3 install -r requirements.txt
 
 # Get coronavirus updates
 
-![covid-19.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/covid-19.jpg?raw=true)
+![covid-19.jpg](./screenshots/covid-19.jpg?raw=true)
 
 # Get your ChatID
 
-![chatid.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/chatid.jpg?raw=true)
+![chatid.jpg](./screenshots/chatid.jpg?raw=true)
 
 # Get memes and jokes
 
-![memes-N-jokes.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/memes-N-jokes.jpg?raw=true)
+![memes-N-jokes.jpg](./screenshots/memes-N-jokes.jpg?raw=true)
 
 # Send a free SMS
 
-![sms.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/sms.jpg?raw=true)
+![sms.jpg](./screenshots/sms.jpg?raw=true)
 
 _Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
 
 # Run shell commands
 
-![shell.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/shell.jpg?raw=true)
+![shell.jpg](./screenshots/shell.jpg?raw=true)
 
 _Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
 
 # Chat with it when bored or make it do your Math homework
 
-![chat.jpg](https://github.com/csivitu/BroBot/blob/master/screenshots/chat.jpg?raw=true)
+![chat.jpg](./screenshots/chat.jpg?raw=true)
 
 
 <!-- ROADMAP -->
