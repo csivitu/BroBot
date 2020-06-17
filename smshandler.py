@@ -51,18 +51,25 @@ def sms(update, number):
     key = textkey
     message = update.message.text
     collector = proxyscrape.create_collector("default", "http")
-    while True:
+    gotresp = False
+    for i in collector.get_proxies():
         try:
-            i = collector.get_proxy()
             resp = requests.post(
                 textapi,
                 {"phone": number, "message": message, "key": key,},
                 proxies={"http": f"http://{i.host}:{i.port}"},
                 timeout=60,
-            ).json()
+            )
+            gotresp = True
             break
         except BaseException:
             pass
+    if gotresp:
+        resp = resp.json()
+    else:
+        resp = requests.post(
+            textapi, {"phone": number, "message": message, "key": key,},
+        ).json()
     if resp["success"]:
         update.message.reply_text(smssuccess)
     else:
