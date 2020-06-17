@@ -51,40 +51,28 @@ def sms(update, number):
     revised = [m.replace("<td>", "") for m in matches]
     sockets = [f"{s.split('</td>')[0]}:{s.split('</td>')[1]}" for s in revised]
     random.shuffle(sockets)
-    if len(sockets) != 0:
-        resp = None
-        gotresp = False
-        for i in sockets:
-            try:
-                resp = requests.post(
-                    textapi,
-                    {"phone": number, "message": message, "key": key,},
-                    proxies={"http": f"http://{i}"},
-                )
-                gotresp = True
-                break
-            except BaseException:
-                pass
-    else:
-        resp = requests.post(
-            textapi, {"phone": number, "message": message, "key": key,},
-        )
-        gotresp = True
-    if gotresp:
-        res = resp.json()
-        if res["success"]:
-            update.message.reply_text(smssuccess)
-        else:
-            update.message.reply_text(sendingfail)
-    else:
+    gotresp = False
+    for i in sockets:
+        try:
+            resp = requests.post(
+                textapi,
+                {"phone": number, "message": message, "key": key,},
+                proxies={"http": f"http://{i}"},
+                timeout=60,
+            )
+            gotresp = True
+            break
+        except BaseException:
+            pass
+    if not gotresp:
         resp = requests.post(
             textapi, {"phone": number, "message": message, "key": key,},
         )
         res = resp.json()
-        if res["success"]:
-            update.message.reply_text(smssuccess)
-        else:
-            update.message.reply_text(sendingfail)
+    if res["success"]:
+        update.message.reply_text(smssuccess)
+    else:
+        update.message.reply_text(sendingfail)
 
 
 def askmsg(update, context):

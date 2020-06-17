@@ -6,7 +6,9 @@ import random
 
 def unknown(update, context):
     try:
-        mathans = requests.get(f"""{mathapi}{quote_plus(update.message.text.lower().replace("what's", "").replace("what is", "").replace("?", "").strip())}""").text.strip()
+        mathans = requests.get(
+            f"""{mathapi}{quote_plus(update.message.text.lower().replace("what's", "").replace("what is", "").replace("?", "").strip())}"""
+        ).text.strip()
         if "Error" in mathans:
             text = quote_plus(update.message.text)
             api = chatapi + text

@@ -1,4 +1,12 @@
-from text import sshstartcommand, emptyoutput, repopath, filename, shellmsg, notadmin, keyapi
+from text import (
+    sshstartcommand,
+    emptyoutput,
+    repopath,
+    filename,
+    shellmsg,
+    notadmin,
+    keyapi,
+)
 from telegram.ext import ConversationHandler
 import subprocess
 import threading
