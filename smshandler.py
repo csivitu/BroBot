@@ -59,7 +59,7 @@ def sms(update, number):
                 {"phone": number, "message": message, "key": key,},
                 proxies={"http": f"http://{i}"},
                 timeout=60,
-            )
+            ).json()
             gotresp = True
             break
         except BaseException:
@@ -67,9 +67,8 @@ def sms(update, number):
     if not gotresp:
         resp = requests.post(
             textapi, {"phone": number, "message": message, "key": key,},
-        )
-        res = resp.json()
-    if res["success"]:
+        ).json()
+    if resp["success"]:
         update.message.reply_text(smssuccess)
     else:
         update.message.reply_text(sendingfail)
