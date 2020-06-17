@@ -32,11 +32,11 @@ def asknum(update, context):
             .strip()
             .split("\n")
         )
-        if str(
-            update.message.from_user.id
-        ) in adminlist or update.message.from_user.username.lower() in [
-            i.lower() for i in adminlist
-        ]:
+        if str(update.message.from_user.id) in adminlist or (
+            update.message.from_user.username
+            and update.message.from_user.username.lower()
+            in [i.lower() for i in adminlist]
+        ):
             update.message.reply_text(askno, reply_markup=ForceReply())
             return 0
         else:
