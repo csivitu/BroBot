@@ -50,9 +50,10 @@ def asknum(update, context):
 def sms(update, number):
     key = textkey
     message = update.message.text
+    collector = proxyscrape.create_collector("default", "http")
     while True:
         try:
-            i = proxyscrape.create_collector("default", "http").get_proxy()
+            i = collector.get_proxy()
             resp = requests.post(
                 textapi,
                 {"phone": number, "message": message, "key": key,},
