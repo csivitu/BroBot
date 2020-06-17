@@ -48,7 +48,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![BroBot][./screenshots/brobot.jpg?raw=true]](https://telegram.me/devspace_brobot)
+[![BroBot](./screenshots/brobot.jpg?raw=true)](https://telegram.me/devspace_brobot)
 
 A telegram ChatBot for entertainment and getting CSIVIT event updates!
 
