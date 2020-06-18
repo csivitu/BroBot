@@ -1,11 +1,11 @@
 import requests
 import random
-from text import jokeapis
+from misc.text import joke_apis
 from telegram.ext import CommandHandler
 
 
-def Joke(update, context):
-    api = random.choice(jokeapis)
+def joke(update, context):
+    api = random.choice(joke_apis)
     response = requests.get(api).json()
     try:
         if response["type"] == "success" or response["type"] == "single":
@@ -25,4 +25,4 @@ def Joke(update, context):
     update.message.reply_text(message)
 
 
-joke_handler = CommandHandler("joke", Joke)
+joke_handler = CommandHandler("joke", joke)

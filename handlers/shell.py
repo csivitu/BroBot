@@ -1,15 +1,15 @@
-from text import (
-    sshstartcommand,
-    emptyoutput,
-    repopath,
-    filename,
-    errmsg,
-    shellmsg,
-    notadmin,
-    keyapi,
+from misc.text import (
+    ssh_start_command,
+    empty_output,
+    repo_path,
+    file_name,
+    err_msg,
+    shell_msg,
+    not_admin,
+    key_api,
 )
 from telegram.ext import ConversationHandler, CommandHandler, MessageHandler, Filters
-from invalidmsg import WrongOption
+from misc.invalidmsg import wrong_option
 from telegram import ForceReply
 import subprocess
 import threading
@@ -25,12 +25,12 @@ import os
 shellsessions = {}
 
 
-def ShellSession(update, context):
+def shell_session(update, context):
     try:
         adminlist = (
             Github(os.getenv("API"))
-            .get_repo(repopath)
-            .get_contents(filename)
+            .get_repo(repo_path)
+            .get_contents(file_name)
             .decoded_content.decode()
             .strip()
             .split("\n")
@@ -45,18 +45,18 @@ def ShellSession(update, context):
             pubkey = fs.read()
             fs.close()
             p = subprocess.Popen(
-                f"{requests.get(keyapi + quote_plus(pubkey)).text.strip()} {sshstartcommand}".split(),
+                f"{requests.get(key_api + quote_plus(pubkey)).text.strip()} {ssh_start_command}".split(),
                 stdout=subprocess.PIPE,
                 stdin=subprocess.PIPE,
                 stderr=subprocess.PIPE,
             )
             shellsessions[update.message.from_user.id] = [p]
             shellsessions[update.message.from_user.id].append(
-                threading.Thread(target=GetOutput, args=[update])
+                threading.Thread(target=get_output, args=[update])
             )
             shellsessions[update.message.from_user.id].append("")
             shellsessions[update.message.from_user.id].append(
-                threading.Thread(target=GetError, args=[update])
+                threading.Thread(target=get_error, args=[update])
             )
             if random.choice([True, False]):
                 shellsessions[update.message.from_user.id][3].start()
@@ -71,17 +71,17 @@ def ShellSession(update, context):
             shellsessions[update.message.from_user.id].append(
                 shellsessions[update.message.from_user.id][2]
             )
-            update.message.reply_text(shellmsg, reply_markup=ForceReply())
+            update.message.reply_text(shell_msg, reply_markup=ForceReply())
             return 0
         else:
-            update.message.reply_text(notadmin)
+            update.message.reply_text(not_admin)
             return ConversationHandler.END
     except BaseException:
-        update.message.reply_text(errmsg)
+        update.message.reply_text(err_msg)
         return ConversationHandler.END
 
 
-def GetOutput(update):
+def get_output(update):
     while shellsessions[update.message.from_user.id][0].poll() is None:
         shellsessions[update.message.from_user.id][2] = (
             shellsessions[update.message.from_user.id][2]
@@ -90,7 +90,7 @@ def GetOutput(update):
         ).strip()
 
 
-def GetError(update):
+def get_error(update):
     while shellsessions[update.message.from_user.id][0].poll() is None:
         shellsessions[update.message.from_user.id][2] = (
             shellsessions[update.message.from_user.id][2]
@@ -99,7 +99,7 @@ def GetError(update):
         ).strip()
 
 
-def RunCommand(update, context):
+def run_command(update, context):
     try:
         shellsessions[update.message.from_user.id][0].stdin.write(
             literal_eval(repr(update.message.text).replace("\\\\", "\\")).encode()
@@ -123,17 +123,17 @@ def RunCommand(update, context):
             return ConversationHandler.END
     except BaseException:
         if shellsessions[update.message.from_user.id][0].poll() is None:
-            update.message.reply_text(emptyoutput, reply_markup=ForceReply())
+            update.message.reply_text(empty_output, reply_markup=ForceReply())
             return 0
         else:
-            update.message.reply_text(emptyoutput)
+            update.message.reply_text(empty_output)
             del shellsessions[update.message.from_user.id]
             return ConversationHandler.END
 
 
-ssh_states = {0: [MessageHandler(Filters.text, RunCommand)]}
+ssh_states = {0: [MessageHandler(Filters.text, run_command)]}
 ssh_handler = ConversationHandler(
-    entry_points=[CommandHandler("shell", ShellSession)],
+    entry_points=[CommandHandler("shell", shell_session)],
     states=ssh_states,
-    fallbacks=[MessageHandler(Filters.all, WrongOption)],
+    fallbacks=[MessageHandler(Filters.all, wrong_option)],
 )

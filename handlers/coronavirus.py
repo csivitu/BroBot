@@ -2,14 +2,14 @@ import requests
 from telegram import ReplyKeyboardMarkup
 import random
 from telegram.ext import ConversationHandler, MessageHandler, CommandHandler, Filters
-from text import invalidmessage, coronaapi, askdate, askcountry
-from invalidmsg import WrongOption
+from misc.text import invalid_message, corona_api, ask_date, ask_country
+from misc.invalidmsg import wrong_option
 
 sessions = {}
 
 
-def CountrySelection(update, context):
-    api = coronaapi
+def country_selection(update, context):
+    api = corona_api
     response = requests.get(api).json()
     countries = list(response.keys())
     randomCountry = random.choice(countries)
@@ -35,7 +35,7 @@ def CountrySelection(update, context):
     for i in range(len(countries)):
         options.append([countries[i]])
     update.message.reply_text(
-        askcountry,
+        ask_country,
         reply_markup=ReplyKeyboardMarkup(
             options, one_time_keyboard=True, resize_keyboard=True
         ),
@@ -44,7 +44,7 @@ def CountrySelection(update, context):
     return 0
 
 
-def DateSelection(update, context):
+def date_selection(update, context):
     country = update.message.text
     sessions[update.message.from_user.id].append(country)
     if country in sessions[update.message.from_user.id][0]:
@@ -53,19 +53,19 @@ def DateSelection(update, context):
             options.append([i["date"]])
         options = options[::-1]
         update.message.reply_text(
-            askdate,
+            ask_date,
             reply_markup=ReplyKeyboardMarkup(
                 options, one_time_keyboard=True, resize_keyboard=True
             ),
         )
         return 1
     else:
-        message = invalidmessage
+        message = invalid_message
         update.message.reply_text(message)
         return ConversationHandler.END
 
 
-def CoronaUpdates(update, context):
+def corona_updates(update, context):
     date = update.message.text
     data = None
     for i in range(
@@ -98,18 +98,18 @@ def CoronaUpdates(update, context):
             message += f'New deaths on {date}: {data["deaths"]}\n'
             message += f'New recovered on {date}: {data["recovered"]}'
     else:
-        message = invalidmessage
+        message = invalid_message
     update.message.reply_text(message)
     del sessions[update.message.from_user.id]
     return ConversationHandler.END
 
 
 corona_states = {
-    0: [MessageHandler(Filters.text, DateSelection)],
-    1: [MessageHandler(Filters.text, CoronaUpdates)],
+    0: [MessageHandler(Filters.text, date_selection)],
+    1: [MessageHandler(Filters.text, corona_updates)],
 }
 corona_handler = ConversationHandler(
-    entry_points=[CommandHandler("coronavirus", CountrySelection)],
+    entry_points=[CommandHandler("coronavirus", country_selection)],
     states=corona_states,
-    fallbacks=[MessageHandler(Filters.all, WrongOption)],
+    fallbacks=[MessageHandler(Filters.all, wrong_option)],
 )

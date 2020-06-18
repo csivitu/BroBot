@@ -1,18 +1,18 @@
 import requests
 from urllib.parse import quote_plus
-from text import unknownmessage, chatapi, mathapi
+from misc.text import unknown_message, chat_api, math_api
 import random
 from telegram.ext import MessageHandler, Filters
 
 
-def Unknown(update, context):
+def unknown(update, context):
     try:
         mathans = requests.get(
-            f"""{mathapi}{quote_plus(update.message.text.lower().replace("what's", "").replace("what is", "").replace("?", "").strip())}"""
+            f"""{math_api}{quote_plus(update.message.text.lower().replace("what's", "").replace("what is", "").replace("?", "").strip())}"""
         ).text.strip()
         if "Error" in mathans:
             text = quote_plus(update.message.text)
-            api = chatapi + text
+            api = chat_api + text
             response = requests.get(api).json()
             message = response["response"]
             update.message.reply_text(message)
@@ -20,8 +20,8 @@ def Unknown(update, context):
             message = random.choice([f"It is {mathans}.", f"It's {mathans}.", mathans])
             update.message.reply_text(message)
     except BaseException:
-        message = unknownmessage
+        message = unknown_message
         update.message.reply_text(message)
 
 
-unknown_handler = MessageHandler(Filters.all, Unknown)
+unknown_handler = MessageHandler(Filters.all, unknown)
