@@ -18,8 +18,10 @@ import string
 import requests
 import os
 import proxyscrape
+import random
 
 sessions = {}
+sockets = proxyscrape.create_collector("default", "http")
 
 
 def asknum(update, context):
@@ -50,9 +52,10 @@ def asknum(update, context):
 def sms(update, number):
     key = textkey
     message = update.message.text
-    collector = proxyscrape.create_collector("default", "http")
+    collector = sockets.get_proxies()
+    random.shuffle(collector)
     gotresp = False
-    for i in collector.get_proxies():
+    for i in collector:
         try:
             resp = requests.post(
                 textapi,
