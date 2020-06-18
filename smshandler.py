@@ -76,7 +76,7 @@ def sms(update, number):
     if resp["success"]:
         update.message.reply_text(f"{smssuccess}{resp['textId']}.")
     else:
-        update.message.reply_text(f"{sendingfail} {resp['error']}!")
+        update.message.reply_text(f"{sendingfail} {resp['error']}")
 
 
 def askmsg(update, context):
