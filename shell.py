@@ -8,7 +8,8 @@ from text import (
     notadmin,
     keyapi,
 )
-from telegram.ext import ConversationHandler
+from telegram.ext import ConversationHandler, CommandHandler, MessageHandler, Filters
+from invalidmsg import WrongOption
 from telegram import ForceReply
 import subprocess
 import threading
@@ -24,7 +25,7 @@ import os
 shellsessions = {}
 
 
-def shellsession(update, context):
+def ShellSession(update, context):
     try:
         adminlist = (
             Github(os.getenv("API"))
@@ -51,11 +52,11 @@ def shellsession(update, context):
             )
             shellsessions[update.message.from_user.id] = [p]
             shellsessions[update.message.from_user.id].append(
-                threading.Thread(target=getoutput, args=[update])
+                threading.Thread(target=GetOutput, args=[update])
             )
             shellsessions[update.message.from_user.id].append("")
             shellsessions[update.message.from_user.id].append(
-                threading.Thread(target=geterror, args=[update])
+                threading.Thread(target=GetError, args=[update])
             )
             if random.choice([True, False]):
                 shellsessions[update.message.from_user.id][3].start()
@@ -80,7 +81,7 @@ def shellsession(update, context):
         return ConversationHandler.END
 
 
-def getoutput(update):
+def GetOutput(update):
     while shellsessions[update.message.from_user.id][0].poll() is None:
         shellsessions[update.message.from_user.id][2] = (
             shellsessions[update.message.from_user.id][2]
@@ -89,7 +90,7 @@ def getoutput(update):
         ).strip()
 
 
-def geterror(update):
+def GetError(update):
     while shellsessions[update.message.from_user.id][0].poll() is None:
         shellsessions[update.message.from_user.id][2] = (
             shellsessions[update.message.from_user.id][2]
@@ -98,7 +99,7 @@ def geterror(update):
         ).strip()
 
 
-def runcommand(update, context):
+def RunCommand(update, context):
     try:
         shellsessions[update.message.from_user.id][0].stdin.write(
             literal_eval(repr(update.message.text).replace("\\\\", "\\")).encode()
@@ -128,3 +129,11 @@ def runcommand(update, context):
             update.message.reply_text(emptyoutput)
             del shellsessions[update.message.from_user.id]
             return ConversationHandler.END
+
+
+ssh_states = {0: [MessageHandler(Filters.text, RunCommand)]}
+ssh_handler = ConversationHandler(
+    entry_points=[CommandHandler("shell", ShellSession)],
+    states=ssh_states,
+    fallbacks=[MessageHandler(Filters.all, WrongOption)],
+)

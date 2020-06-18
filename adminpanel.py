@@ -9,13 +9,14 @@ from text import (
     errmsg,
     removesuccess,
 )
-from telegram.ext import ConversationHandler
+from telegram.ext import ConversationHandler, MessageHandler, CommandHandler, Filters
 from telegram import ReplyKeyboardMarkup, ForceReply
 from github import Github
+from invalidmsg import WrongOption
 import os
 
 
-def adminpanel(update, contex):
+def AdminPanel(update, contex):
     options = [["List Admins"], ["Add Admin"], ["Remove Admin"]]
     update.message.reply_text(
         "Please select an option:",
@@ -26,7 +27,7 @@ def adminpanel(update, contex):
     return 0
 
 
-def adminoptions(update, context):
+def AdminOptions(update, context):
     option = update.message.text
     if option == "List Admins":
         try:
@@ -91,7 +92,7 @@ def adminoptions(update, context):
             return ConversationHandler.END
 
 
-def addadmin(update, context):
+def AddAdmin(update, context):
     try:
         g = Github(os.getenv("API"))
         adminlist = [
@@ -122,7 +123,7 @@ def addadmin(update, context):
         return ConversationHandler.END
 
 
-def removeadmin(update, context):
+def RemoveAdmin(update, context):
     try:
         g = Github(os.getenv("API"))
         adminlist = [
@@ -151,3 +152,19 @@ def removeadmin(update, context):
     except BaseException:
         update.message.reply_text(errmsg)
         return ConversationHandler.END
+
+
+admin_states = {
+    0: [
+        MessageHandler(
+            Filters.regex("^(List Admins|Add Admin|Remove Admin)$"), AdminOptions
+        )
+    ],
+    1: [MessageHandler(Filters.text, AddAdmin)],
+    2: [MessageHandler(Filters.text, RemoveAdmin)],
+}
+admin_handler = ConversationHandler(
+    entry_points=[CommandHandler("adminpanel", AdminPanel)],
+    states=admin_states,
+    fallbacks=[MessageHandler(Filters.all, WrongOption)],
+)

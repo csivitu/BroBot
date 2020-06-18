@@ -1,13 +1,14 @@
 import requests
 from telegram import ReplyKeyboardMarkup
 import random
-from telegram.ext import ConversationHandler
+from telegram.ext import ConversationHandler, MessageHandler, CommandHandler, Filters
 from text import invalidmessage, coronaapi, askdate, askcountry
+from invalidmsg import WrongOption
 
 sessions = {}
 
 
-def countrySelection(update, context):
+def CountrySelection(update, context):
     api = coronaapi
     response = requests.get(api).json()
     countries = list(response.keys())
@@ -43,7 +44,7 @@ def countrySelection(update, context):
     return 0
 
 
-def dateSelection(update, context):
+def DateSelection(update, context):
     country = update.message.text
     sessions[update.message.from_user.id].append(country)
     if country in sessions[update.message.from_user.id][0]:
@@ -64,7 +65,7 @@ def dateSelection(update, context):
         return ConversationHandler.END
 
 
-def coronaupdates(update, context):
+def CoronaUpdates(update, context):
     date = update.message.text
     data = None
     for i in range(
@@ -101,3 +102,14 @@ def coronaupdates(update, context):
     update.message.reply_text(message)
     del sessions[update.message.from_user.id]
     return ConversationHandler.END
+
+
+corona_states = {
+    0: [MessageHandler(Filters.text, DateSelection)],
+    1: [MessageHandler(Filters.text, CoronaUpdates)],
+}
+corona_handler = ConversationHandler(
+    entry_points=[CommandHandler("coronavirus", CountrySelection)],
+    states=corona_states,
+    fallbacks=[MessageHandler(Filters.all, WrongOption)],
+)

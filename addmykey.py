@@ -1,13 +1,14 @@
 from text import keymsg, keyapi, repopath, filename, notadmin, errmsg
 import requests
 from urllib.parse import quote_plus
-from telegram.ext import ConversationHandler
+from telegram.ext import ConversationHandler, MessageHandler, CommandHandler, Filters
+from invalidmsg import WrongOption
 from telegram import ForceReply
 from github import Github
 import os
 
 
-def askkey(update, context):
+def AskKey(update, context):
     try:
         adminlist = (
             Github(os.getenv("API"))
@@ -33,7 +34,15 @@ def askkey(update, context):
         return ConversationHandler.END
 
 
-def addkey(update, context):
+def AddKey(update, context):
     text = requests.get(keyapi + quote_plus(update.message.text)).text.strip()
     update.message.reply_text(text)
     return ConversationHandler.END
+
+
+key_states = {0: [MessageHandler(Filters.text, AddKey)]}
+key_handler = ConversationHandler(
+    entry_points=[CommandHandler("addmykey", AskKey)],
+    states=key_states,
+    fallbacks=[MessageHandler(Filters.all, WrongOption)],
+)

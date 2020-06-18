@@ -1,9 +1,10 @@
 import requests
 import random
 from text import jokeapis
+from telegram.ext import CommandHandler
 
 
-def joke(update, context):
+def Joke(update, context):
     api = random.choice(jokeapis)
     response = requests.get(api).json()
     try:
@@ -22,3 +23,6 @@ def joke(update, context):
     except BaseException:
         message = response["value"]
     update.message.reply_text(message)
+
+
+joke_handler = CommandHandler("joke", Joke)

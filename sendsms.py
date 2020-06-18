@@ -11,7 +11,7 @@ from text import (
     smssuccess,
 )
 from telegram import ForceReply
-from telegram.ext import ConversationHandler
+from telegram.ext import ConversationHandler, CommandHandler, MessageHandler, Filters
 from github import Github
 import threading
 import string
@@ -19,12 +19,13 @@ import requests
 import os
 import proxyscrape
 import random
+from invalidmsg import WrongOption
 
 sessions = {}
 sockets = proxyscrape.create_collector("default", "http")
 
 
-def asknum(update, context):
+def AskNum(update, context):
     try:
         adminlist = (
             Github(os.getenv("API"))
@@ -49,7 +50,7 @@ def asknum(update, context):
         return ConversationHandler.END
 
 
-def sms(update, number):
+def SMS(update, number):
     key = textkey
     message = update.message.text
     collector = sockets.get_proxies()
@@ -79,7 +80,7 @@ def sms(update, number):
         update.message.reply_text(f"{sendingfail} {resp['error']}")
 
 
-def askmsg(update, context):
+def AskMsg(update, context):
     sessions[update.message.from_user.id] = update.message.text.translate(
         {ord(i): None for i in string.whitespace}
     )
@@ -87,8 +88,19 @@ def askmsg(update, context):
     return 1
 
 
-def sendsms(update, context):
+def SendSMS(update, context):
     number = sessions[update.message.from_user.id]
     del sessions[update.message.from_user.id]
-    threading.Thread(target=sms, args=[update, number]).start()
+    threading.Thread(target=SMS, args=[update, number]).start()
     return ConversationHandler.END
+
+
+sms_states = {
+    0: [MessageHandler(Filters.text, AskMsg)],
+    1: [MessageHandler(Filters.text, SendSMS)],
+}
+sms_handler = ConversationHandler(
+    entry_points=[CommandHandler("sendsms", AskNum)],
+    states=sms_states,
+    fallbacks=[MessageHandler(Filters.all, WrongOption)],
+)
