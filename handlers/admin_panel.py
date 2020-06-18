@@ -12,7 +12,7 @@ from misc.text import (
 from telegram.ext import ConversationHandler, MessageHandler, CommandHandler, Filters
 from telegram import ReplyKeyboardMarkup, ForceReply
 from github import Github
-from misc.invalidmsg import wrong_option
+from misc.invalid_msg import wrong_option
 import os
 
 

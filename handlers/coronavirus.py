@@ -3,7 +3,7 @@ from telegram import ReplyKeyboardMarkup
 import random
 from telegram.ext import ConversationHandler, MessageHandler, CommandHandler, Filters
 from misc.text import invalid_message, corona_api, ask_date, ask_country
-from misc.invalidmsg import wrong_option
+from misc.invalid_msg import wrong_option
 
 sessions = {}
 
@@ -12,9 +12,9 @@ def country_selection(update, context):
     api = corona_api
     response = requests.get(api).json()
     countries = list(response.keys())
-    randomCountry = random.choice(countries)
+    random_country = random.choice(countries)
     response["World"] = []
-    for i in range(len(response[randomCountry])):
+    for i in range(len(response[random_country])):
         confirmed = 0
         recovered = 0
         deaths = 0
@@ -24,7 +24,7 @@ def country_selection(update, context):
             recovered += response[j][i]["recovered"]
         response["World"].append(
             {
-                "date": response[randomCountry][i]["date"],
+                "date": response[random_country][i]["date"],
                 "confirmed": confirmed,
                 "deaths": deaths,
                 "recovered": recovered,

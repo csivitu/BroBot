@@ -2,7 +2,7 @@ from misc.text import key_msg, key_api, repo_path, file_name, not_admin, err_msg
 import requests
 from urllib.parse import quote_plus
 from telegram.ext import ConversationHandler, MessageHandler, CommandHandler, Filters
-from misc.invalidmsg import wrong_option
+from misc.invalid_msg import wrong_option
 from telegram import ForceReply
 from github import Github
 import os
@@ -10,7 +10,7 @@ import os
 
 def ask_key(update, context):
     try:
-        adminlist = (
+        admin_list = (
             Github(os.getenv("API"))
             .get_repo(repo_path)
             .get_contents(file_name)
@@ -18,10 +18,10 @@ def ask_key(update, context):
             .strip()
             .split("\n")
         )
-        if str(update.message.from_user.id) in adminlist or (
+        if str(update.message.from_user.id) in admin_list or (
             update.message.from_user.username
             and update.message.from_user.username.lower()
-            in [i.lower() for i in adminlist]
+            in [i.lower() for i in admin_list]
         ):
             text = key_msg
             update.message.reply_text(text, reply_markup=ForceReply())

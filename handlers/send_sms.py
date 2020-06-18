@@ -19,7 +19,7 @@ import requests
 import os
 import proxyscrape
 import random
-from misc.invalidmsg import wrong_option
+from misc.invalid_msg import wrong_option
 
 sessions = {}
 sockets = proxyscrape.create_collector("default", "http")

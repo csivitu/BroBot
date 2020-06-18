@@ -9,7 +9,7 @@ from misc.text import (
     key_api,
 )
 from telegram.ext import ConversationHandler, CommandHandler, MessageHandler, Filters
-from misc.invalidmsg import wrong_option
+from misc.invalid_msg import wrong_option
 from telegram import ForceReply
 import subprocess
 import threading
@@ -22,7 +22,7 @@ from urllib.parse import quote_plus
 import requests
 import os
 
-shellsessions = {}
+sessions = {}
 
 
 def shell_session(update, context):
@@ -50,26 +50,26 @@ def shell_session(update, context):
                 stdin=subprocess.PIPE,
                 stderr=subprocess.PIPE,
             )
-            shellsessions[update.message.from_user.id] = [p]
-            shellsessions[update.message.from_user.id].append(
+            sessions[update.message.from_user.id] = [p]
+            sessions[update.message.from_user.id].append(
                 threading.Thread(target=get_output, args=[update])
             )
-            shellsessions[update.message.from_user.id].append("")
-            shellsessions[update.message.from_user.id].append(
+            sessions[update.message.from_user.id].append("")
+            sessions[update.message.from_user.id].append(
                 threading.Thread(target=get_error, args=[update])
             )
             if random.choice([True, False]):
-                shellsessions[update.message.from_user.id][3].start()
+                sessions[update.message.from_user.id][3].start()
                 time.sleep(1)
-                shellsessions[update.message.from_user.id][1].start()
+                sessions[update.message.from_user.id][1].start()
             else:
-                shellsessions[update.message.from_user.id][1].start()
+                sessions[update.message.from_user.id][1].start()
                 time.sleep(1)
-                shellsessions[update.message.from_user.id][3].start()
+                sessions[update.message.from_user.id][3].start()
             time.sleep(1)
-            text = shellsessions[update.message.from_user.id][2]
-            shellsessions[update.message.from_user.id].append(
-                shellsessions[update.message.from_user.id][2]
+            text = sessions[update.message.from_user.id][2]
+            sessions[update.message.from_user.id].append(
+                sessions[update.message.from_user.id][2]
             )
             update.message.reply_text(shell_msg, reply_markup=ForceReply())
             return 0
@@ -82,52 +82,52 @@ def shell_session(update, context):
 
 
 def get_output(update):
-    while shellsessions[update.message.from_user.id][0].poll() is None:
-        shellsessions[update.message.from_user.id][2] = (
-            shellsessions[update.message.from_user.id][2]
+    while sessions[update.message.from_user.id][0].poll() is None:
+        sessions[update.message.from_user.id][2] = (
+            sessions[update.message.from_user.id][2]
             + "\n"
-            + shellsessions[update.message.from_user.id][0].stdout.readline().decode()
+            + sessions[update.message.from_user.id][0].stdout.readline().decode()
         ).strip()
 
 
 def get_error(update):
-    while shellsessions[update.message.from_user.id][0].poll() is None:
-        shellsessions[update.message.from_user.id][2] = (
-            shellsessions[update.message.from_user.id][2]
+    while sessions[update.message.from_user.id][0].poll() is None:
+        sessions[update.message.from_user.id][2] = (
+            sessions[update.message.from_user.id][2]
             + "\n"
-            + shellsessions[update.message.from_user.id][0].stderr.readline().decode()
+            + sessions[update.message.from_user.id][0].stderr.readline().decode()
         ).strip()
 
 
 def run_command(update, context):
     try:
-        shellsessions[update.message.from_user.id][0].stdin.write(
+        sessions[update.message.from_user.id][0].stdin.write(
             literal_eval(repr(update.message.text).replace("\\\\", "\\")).encode()
         )
-        shellsessions[update.message.from_user.id][0].stdin.flush()
+        sessions[update.message.from_user.id][0].stdin.flush()
         time.sleep(2)
         text = ansistrip.ansi_strip(
-            shellsessions[update.message.from_user.id][2].replace(
-                shellsessions[update.message.from_user.id][4], "", 1
+            sessions[update.message.from_user.id][2].replace(
+                sessions[update.message.from_user.id][4], "", 1
             )
         )
-        shellsessions[update.message.from_user.id][4] = shellsessions[
+        sessions[update.message.from_user.id][4] = sessions[
             update.message.from_user.id
         ][2]
-        if shellsessions[update.message.from_user.id][0].poll() is None:
+        if sessions[update.message.from_user.id][0].poll() is None:
             update.message.reply_text(text, reply_markup=ForceReply())
             return 0
         else:
             update.message.reply_text(text)
-            del shellsessions[update.message.from_user.id]
+            del sessions[update.message.from_user.id]
             return ConversationHandler.END
     except BaseException:
-        if shellsessions[update.message.from_user.id][0].poll() is None:
+        if sessions[update.message.from_user.id][0].poll() is None:
             update.message.reply_text(empty_output, reply_markup=ForceReply())
             return 0
         else:
             update.message.reply_text(empty_output)
-            del shellsessions[update.message.from_user.id]
+            del sessions[update.message.from_user.id]
             return ConversationHandler.END
 
 

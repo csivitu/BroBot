@@ -1,17 +1,17 @@
 from telegram.ext import Updater
 import os
 from dotenv import load_dotenv
-from handlers.adminpanel import admin_handler
+from handlers.admin_panel import admin_handler
 from handlers.unknown import unknown_handler
 from handlers.start import start_handler
 from handlers.meme import meme_handler
 from handlers.joke import joke_handler
 from handlers.coronavirus import corona_handler
-from handlers.addmykey import key_handler
+from handlers.add_my_key import key_handler
 from handlers.shell import ssh_handler
 from handlers.about import about_handler
-from handlers.getchatid import chatid_handler
-from handlers.sendsms import sms_handler
+from handlers.get_chat_id import chatid_handler
+from handlers.send_sms import sms_handler
 
 
 config = ".env" if os.path.exists(".env") else "sample.env"
