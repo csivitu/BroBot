@@ -7,23 +7,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo">
+  <a href="https://github.com/csivitu/BroBot">
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">BroBot</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
     <br />
-    <a href="https://github.com/github_username/repo"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/csivitu/BroBot"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo">View Demo</a>
+    <a href="https://github.com/csivitu/BroBot">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo/issues">Report Bug</a>
+    <a href="https://github.com/csivitu/BroBot/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo/issues">Request Feature</a>
+    <a href="https://github.com/csivitu/BroBot/issues">Request Feature</a>
   </p>
 </p>
 
@@ -48,18 +48,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![BroBot](./screenshots/brobot.jpg?raw=true)](https://telegram.me/devspace_brobot)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo`, `twitter_handle`, `email`
+A telegram ChatBot for entertainment and getting CSIVIT event updates!
 
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [python](https://www.python.org/downloads/latest)
+* [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
 
 
 
@@ -70,21 +67,22 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+* Python 3.x
 
 ### Installation
  
 1. Clone the repo
 ```sh
-git clone https://github.com/github_username/repo.git
+git clone https://github.com/csivitu/BroBot.git
+cd BroBot
 ```
-2. Install NPM packages
+2. Install pip packages
 ```sh
-npm install
+pip3 install -r requirements.txt
+```
+3. Create a .env file and start the BoT
+```sh
+python3 index.py
 ```
 
 
@@ -92,16 +90,39 @@ npm install
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+# Get coronavirus updates
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+![covid-19.jpg](./screenshots/covid-19.jpg?raw=true)
 
+# Get your ChatID
+
+![chatid.jpg](./screenshots/chatid.jpg?raw=true)
+
+# Get memes and jokes
+
+![memes-N-jokes.jpg](./screenshots/memes-N-jokes.jpg?raw=true)
+
+# Send a free SMS
+
+![sms.jpg](./screenshots/sms.jpg?raw=true)
+
+_Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
+
+# Run shell commands
+
+![shell.jpg](./screenshots/shell.jpg?raw=true)
+
+_Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
+
+# Chat with it when bored or make it do your Math homework
+
+![chat.jpg](./screenshots/chat.jpg?raw=true)
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/csivitu/brobot/issues) for a list of proposed features (and known issues).
 
 
 
@@ -112,16 +133,16 @@ Contributions are what make the open source community such an amazing place to b
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
+You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more information.
 
 
 
@@ -131,7 +152,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [csivitu-shield]: https://img.shields.io/badge/csivitu-csivitu-blue
 [csivitu-url]: https://csivit.com
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/csivitu/BroBot/issues
 
 ## Contributors ✨
 
