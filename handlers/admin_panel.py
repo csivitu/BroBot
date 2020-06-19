@@ -45,7 +45,7 @@ def admin_options(update, context):
 
     elif option == "Add Admin":
         try:
-            adminlist = (
+            admin_list = (
                 Github(os.getenv("API"))
                 .get_repo(repo_path)
                 .get_contents(file_name)
@@ -53,10 +53,10 @@ def admin_options(update, context):
                 .strip()
                 .split("\n")
             )
-            if str(update.message.from_user.id) in adminlist or (
+            if str(update.message.from_user.id) in admin_list or (
                 update.message.from_user.username
                 and update.message.from_user.username.lower()
-                in [i.lower() for i in adminlist]
+                in [i.lower() for i in admin_list]
             ):
                 update.message.reply_text(ask_id, reply_markup=ForceReply())
                 return 1
@@ -69,7 +69,7 @@ def admin_options(update, context):
 
     else:
         try:
-            adminlist = (
+            admin_list = (
                 Github(os.getenv("API"))
                 .get_repo(repo_path)
                 .get_contents(file_name)
@@ -77,10 +77,10 @@ def admin_options(update, context):
                 .strip()
                 .split("\n")
             )
-            if str(update.message.from_user.id) in adminlist or (
+            if str(update.message.from_user.id) in admin_list or (
                 update.message.from_user.username
                 and update.message.from_user.username.lower()
-                in [i.lower() for i in adminlist]
+                in [i.lower() for i in admin_list]
             ):
                 update.message.reply_text(ask_id, reply_markup=ForceReply())
                 return 2
@@ -95,7 +95,7 @@ def admin_options(update, context):
 def add_admin(update, context):
     try:
         g = Github(os.getenv("API"))
-        adminlist = [
+        admin_list = [
             i.lower()
             for i in g.get_repo(repo_path)
             .get_contents(file_name)
@@ -104,16 +104,16 @@ def add_admin(update, context):
             .split("\n")
         ]
         admin = update.message.text.lower()
-        if admin in adminlist:
+        if admin in admin_list:
             update.message.reply_text(admin + " " + already_admin)
         else:
             repo = g.get_repo(repo_path)
             contents = repo.get_contents(file_name)
-            adminlist.append(admin)
+            admin_list.append(admin)
             repo.update_file(
                 contents.path,
                 f"added-{admin}-as-admin",
-                "\n".join(adminlist),
+                "\n".join(admin_list),
                 contents.sha,
             )
             update.message.reply_text(admin + " " + add_success)
@@ -126,7 +126,7 @@ def add_admin(update, context):
 def remove_admin(update, context):
     try:
         g = Github(os.getenv("API"))
-        adminlist = [
+        admin_list = [
             i.lower()
             for i in g.get_repo(repo_path)
             .get_contents(file_name)
@@ -135,16 +135,16 @@ def remove_admin(update, context):
             .split("\n")
         ]
         admin = update.message.text.lower()
-        if admin not in adminlist:
+        if admin not in admin_list:
             update.message.reply_text(admin + " " + already_removed)
         else:
             repo = g.get_repo(repo_path)
             contents = repo.get_contents(file_name)
-            adminlist.remove(admin)
+            admin_list.remove(admin)
             repo.update_file(
                 contents.path,
                 f"removed-{admin}-as-admin",
-                "\n".join(adminlist),
+                "\n".join(admin_list),
                 contents.sha,
             )
             update.message.reply_text(admin + " " + remove_success)
