@@ -40,8 +40,8 @@ joke_apis = [
     "https://api.icndb.com/jokes/random/?escape=javascript",
 ]
 empty_output = "No Output!"
-sending_fail = "Could not send the SMS! Error:"
-sms_success = "SMS sent successfully! Check Your status at: https://textbelt.com/status"
+sending_fail = "Error! ErrorMsg:"
+sms_success = "Success! Check it's status at: https://textbelt.com/status"
 text_key = "textbelt"
 text_api = "http://textbelt.com/text/"
 not_admin = "You are not authorized to use this feature! Request access by submitting a pull request to https://github.com/alias-rahil/admin-list."
