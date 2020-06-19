@@ -64,7 +64,7 @@ def sms(update, number):
         except BaseException:
             pass
     if resp["success"]:
-        update.message.reply_text(f"{sms_success}{resp['textId']}.")
+        update.message.reply_text(f"{sms_success}/{resp['textId']}.")
     else:
         update.message.reply_text(f"{sending_fail} {resp['error']}")
 
