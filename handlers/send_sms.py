@@ -60,7 +60,6 @@ def sms(update, number):
                 proxies={"http": f"http://{i['Ip']}:{i['Port']}"},
                 timeout=15,
             ).json()
-            gotresp = True
             break
         except BaseException:
             pass
