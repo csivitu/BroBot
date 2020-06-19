@@ -70,7 +70,7 @@ def sms(update, number):
 
 
 def ask_msg(update, context):
-    sessions[update.message.from_user.id] = f"+{re.sub('\D', '', update.message.text)}"
+    sessions[update.message.from_user.id] = "+" + re.sub('\D', '', update.message.text)
     update.message.reply_text(ask_message, reply_markup=ForceReply())
     return 1
 
