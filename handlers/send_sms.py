@@ -18,7 +18,6 @@ import threading
 import string
 import requests
 import os
-import random
 from misc.invalid_msg import wrong_option
 
 sessions = {}
