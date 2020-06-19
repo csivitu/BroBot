@@ -15,7 +15,7 @@ from telegram import ForceReply
 from telegram.ext import ConversationHandler, CommandHandler, MessageHandler, Filters
 from github import Github
 import threading
-import string
+import re
 import requests
 import os
 from misc.invalid_msg import wrong_option
@@ -70,9 +70,7 @@ def sms(update, number):
 
 
 def ask_msg(update, context):
-    sessions[update.message.from_user.id] = update.message.text.translate(
-        {ord(i): None for i in string.whitespace}
-    )
+    sessions[update.message.from_user.id] = f"+{re.sub('\D', '', update.message.text)}"
     update.message.reply_text(ask_message, reply_markup=ForceReply())
     return 1
 
