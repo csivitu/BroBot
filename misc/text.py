@@ -40,7 +40,7 @@ joke_apis = [
     "https://api.icndb.com/jokes/random/?escape=javascript",
 ]
 empty_output = "No Output!"
-sending_fail = "Error! ErrorMsg:"
+sending_fail = "Sending Failed! Error Message:"
 sms_success = "Success! Check it's status at: https://textbelt.com/status"
 text_key = "textbelt"
 text_api = "http://textbelt.com/text/"
