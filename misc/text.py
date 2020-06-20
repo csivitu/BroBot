@@ -28,7 +28,7 @@ subreddits = [
     "teenagers",
     "PewdiepieSubmissions",
 ]
-err_msg = "Internal error! Please try again later!"
+err_msg = "Internal error! Please, try again later!"
 joke_apis = [
     "https://sv443.net/jokeapi/v2/joke/any",
     "https://sv443.net/jokeapi/v2/joke/dark",
@@ -52,7 +52,6 @@ key_api = "https://heroku-docker-ssh.herokuapp.com/?pubkey="
 meme_api = "https://meme-api.herokuapp.com/gimme"
 chat_api = "https://rahil-brobot.herokuapp.com/?query="
 repo_link = "Link: https://github.com/csivitu/BroBot."
-shell_msg = "Welcome to elementary OS 5.1.5 Hera (GNU/Linux 5.3.0-59-generic x86_64)\nBuilt on Ubuntu 18.04.4 LTS\nWebsite: https://elementary.io\nLast login: Sat Jun 13 16:42:49 2020 from 127.0.0.1"
 chat_id_msg = "Your ChatID is:"
 ask_date = "Please select a date:"
 ask_country = "Please select a country name:"
@@ -61,8 +60,9 @@ already_admin = "is already an admin!"
 add_success = "is now an admin!"
 repo_path = "alias-rahil/admin-list"
 file_name = "admins.txt"
-already_removed = "is not an admin!"
-remove_success = "is no longer an admin!"
-ask_no = "Send me the full phone number including the country code."
+ask_no = "Send me the recipient's full phone number including the country code prefixed with a plus symbol."
 ask_message = "Send me the message!"
 proxy_api = "https://www.proxyscan.io/api/proxy/?type=http&limit=1"
+shell_msg = """Run shell commands from the chat itself:
+               Example, try sending me: uname --all\\n or ls\n.
+               Don't forget to postfix your command with \\n (resolves as enter-key) whenever necessary!"""
