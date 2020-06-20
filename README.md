@@ -48,7 +48,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![BroBot](./screenshots/brobot.jpg?raw=true)](https://telegram.me/devspace_brobot)
+<p align="center">
+  <img src="./screenshots/brobot.jpg?raw=true" alt="BroBot.jpg" width="250">
+</p>
 
 A telegram ChatBot for entertainment and getting CSIVIT event updates!
 
@@ -92,31 +94,43 @@ python3 index.py
 
 # Get coronavirus updates
 
-![covid-19.jpg](./screenshots/covid-19.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/covid-19.jpg?raw=true" alt="covid-19.jpg" width="250">
+</p>
 
 # Get your ChatID
 
-![chatid.jpg](./screenshots/chatid.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/chatid.jpg?raw=true" alt="chatid.jpg" width="250">
+</p>
 
 # Get memes and jokes
 
-![memes-N-jokes.jpg](./screenshots/memes-N-jokes.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/memes-N-jokes.jpg?raw=true" alt="memes-N-jokes.jpg" width="250">
+</p>
 
 # Send a free SMS
 
-![sms.jpg](./screenshots/sms.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/sms.jpg?raw=true" alt="sms.jpg" width="250">
+</p>
 
 _Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
 
 # Run shell commands
 
-![shell.jpg](./screenshots/shell.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/shell.jpg?raw=true" alt="shell.jpg" width="250">
+</p>
 
 _Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
 
 # Chat with it when bored or make it do your Math homework
 
-![chat.jpg](./screenshots/chat.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/chat.jpg?raw=true" alt="chat.jpg" width="250">
+</p>
 
 
 <!-- ROADMAP -->
