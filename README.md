@@ -1,8 +1,8 @@
-[![csivit][csivitu-shield]][https://csivit.com]
+[![csivit][csivitu-shield]](https://csivit.com)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-[![Issues][issues-shield]][https://github.com/csivitu/brobot/issues]
+[![Issues][issues-shield]](https://github.com/csivitu/brobot/issues)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -11,18 +11,10 @@
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center" href="https://telegram.me/devspace_brobot">BroBot</h3>
+  <h3 align="center">BroBot</h3>
 
   <p align="center">
-    It's not a bot, it's BroBot!
-    BroBot is a telegram chatbot developed in Python which serves a single platform for various functions.
-    This bot isn't just like your regular bots, it can be sarcastic and funny too.
-    It can bring you updates on COVID-19 with just a single command.
-    Not only does it send you memes, it can also run shell commands from the chat.
-    Feeling lazy? BroBot can also help you solve your math homework!
-    You can use this customised bot to get updates from future CSI events too.
-    Head over to Telegram and experience it for yourself!
-
+    It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
     <br />
     <a href="https://github.com/csivitu/BroBot"><strong>Explore the docs »</strong></a>
     <br />
@@ -60,7 +52,16 @@
   <img src="./screenshots/brobot.jpg?raw=true" alt="BroBot.jpg" width="250">
 </p>
 
-A telegram ChatBot for entertainment and getting CSIVIT event updates!
+[BroBot](https://telegram.me/devspace_brobot):
+<br>
+It's not a bot, it's BroBot!
+BroBot is a telegram chatbot developed in Python which serves a single platform for various functions.
+This bot isn't just like your regular bots, it can be sarcastic and funny too.
+It can bring you updates on COVID-19 with just a single command.
+Not only does it send you memes, it can also run shell commands from the chat.
+Feeling lazy? BroBot can also help you solve your math homework!
+You can use this customised bot to get updates from future CSI events too.
+Head over to Telegram and experience it for yourself!
 
 
 ### Built With
