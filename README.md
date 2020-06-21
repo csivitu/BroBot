@@ -15,6 +15,8 @@
 
   <p align="center">
     It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
+    <br>
+    Click <a href="https://telegram.me/csibrobot">here</a> to add it to Telegram.
     <br />
     <a href="https://github.com/csivitu/BroBot"><strong>Explore the docs »</strong></a>
     <br />
@@ -61,7 +63,7 @@ It can bring you updates on COVID-19 with just a single command.
 Not only does it send you memes, it can also run shell commands from the chat.
 Feeling lazy? BroBot can also help you solve your math homework!
 You can use this customised bot to get updates from future CSI events too.
-Head over to Telegram and experience it for yourself!
+Head over to Telegram and [experience it for yourself](https://telegram.me/csibrobot)!
 
 
 ### Built With
