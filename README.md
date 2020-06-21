@@ -1,6 +1,6 @@
 [![csivit][csivitu-shield]](https://csivit.com)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Issues][issues-shield]](https://github.com/csivitu/brobot/issues)
 
@@ -188,6 +188,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/alias-rahil"><img src="https://avatars2.githubusercontent.com/u/59060219?v=4" width="100px;" alt=""/><br /><sub><b>alias-rahil</b></sub></a><br /><a href="https://github.com/csivitu/BroBot/commits?author=alias-rahil" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/siddhanttk"><img src="https://avatars2.githubusercontent.com/u/60538464?v=4" width="100px;" alt=""/><br /><sub><b>siddhanttk</b></sub></a><br /><a href="#design-siddhanttk" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/ashikka"><img src="https://avatars1.githubusercontent.com/u/58368421?v=4" width="100px;" alt=""/><br /><sub><b>ashikka</b></sub></a><br /><a href="https://github.com/csivitu/BroBot/commits?author=ashikka" title="Documentation">📖</a></td>
   </tr>
 </table>
 
