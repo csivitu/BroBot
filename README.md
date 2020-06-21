@@ -11,7 +11,7 @@
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center"><a href="https://telegram.me/devspace_brobot">BroBot</a></h3>
+  <h3 align="center"><a href="https://telegram.me/csibrobot">BroBot</a></h3>
 
   <p align="center">
     It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
@@ -49,10 +49,10 @@
 ## About The Project
 
 <p align="center">
-  <a href="https://telegram.me/devspace_brobot"><img src="./screenshots/brobot.jpg?raw=true" alt="BroBot.jpg" width="250"></a>
+  <a href="https://telegram.me/csibrobot"><img src="./screenshots/brobot.jpg?raw=true" alt="BroBot.jpg" width="250"></a>
 </p>
 
-[BroBot](https://telegram.me/devspace_brobot):
+[BroBot](https://telegram.me/csibrobot):
 <br>
 It's not a bot, it's BroBot!
 BroBot is a telegram chatbot developed in Python which serves a single platform for various functions.
