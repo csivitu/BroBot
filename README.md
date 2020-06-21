@@ -63,6 +63,7 @@ It can bring you updates on COVID-19 with just a single command.
 Not only does it send you memes, it can also run shell commands from the chat.
 Feeling lazy? BroBot can also help you solve your math homework!
 You can use this customised bot to get updates from future CSI events too.
+<br>
 Head over to Telegram and [experience it for yourself](https://telegram.me/csibrobot)!
 
 
