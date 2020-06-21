@@ -11,10 +11,12 @@
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center"><a href="https://telegram.me/devspace_brobot">BroBot</a></h3>
+  <h3 align="center"><a href="https://telegram.me/csibrobot">BroBot</a></h3>
 
   <p align="center">
     It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
+    <br>
+    Click <a href="https://telegram.me/csibrobot">here</a> to add it to Telegram.
     <br />
     <a href="https://github.com/csivitu/BroBot"><strong>Explore the docs »</strong></a>
     <br />
@@ -49,10 +51,10 @@
 ## About The Project
 
 <p align="center">
-  <a href="https://telegram.me/devspace_brobot"><img src="./screenshots/brobot.jpg?raw=true" alt="BroBot.jpg" width="250"></a>
+  <a href="https://telegram.me/csibrobot"><img src="./screenshots/brobot.jpg?raw=true" alt="BroBot.jpg" width="250"></a>
 </p>
 
-[BroBot](https://telegram.me/devspace_brobot):
+[BroBot](https://telegram.me/csibrobot):
 <br>
 It's not a bot, it's BroBot!
 BroBot is a telegram chatbot developed in Python which serves a single platform for various functions.
@@ -61,7 +63,8 @@ It can bring you updates on COVID-19 with just a single command.
 Not only does it send you memes, it can also run shell commands from the chat.
 Feeling lazy? BroBot can also help you solve your math homework!
 You can use this customised bot to get updates from future CSI events too.
-Head over to Telegram and experience it for yourself!
+<br><br>
+Head over to Telegram and [experience it for yourself](https://telegram.me/csibrobot)!
 
 
 ### Built With
