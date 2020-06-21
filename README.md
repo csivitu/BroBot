@@ -11,7 +11,7 @@
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center"><a href="https://github.com/csivitu/BroBot">BroBot</a></h3>
+  <h3 align="center"><a href="https://telegram.me/devspace_brobot">BroBot</a></h3>
 
   <p align="center">
     It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
