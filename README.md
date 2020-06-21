@@ -1,6 +1,6 @@
 [![csivit][csivitu-shield]][csivitu-url]
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Issues][issues-shield]][issues-url]
 
@@ -164,6 +164,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/alias-rahil"><img src="https://avatars2.githubusercontent.com/u/59060219?v=4" width="100px;" alt=""/><br /><sub><b>alias-rahil</b></sub></a><br /><a href="https://github.com/csivitu/BroBot/commits?author=alias-rahil" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/siddhanttk"><img src="https://avatars2.githubusercontent.com/u/60538464?v=4" width="100px;" alt=""/><br /><sub><b>siddhanttk</b></sub></a><br /><a href="#design-siddhanttk" title="Design">🎨</a></td>
   </tr>
 </table>
 
