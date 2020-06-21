@@ -9,25 +9,23 @@ from misc.text import (
     sending_fail,
     err_msg,
     sms_success,
+    proxy_api,
 )
 from telegram import ForceReply
 from telegram.ext import ConversationHandler, CommandHandler, MessageHandler, Filters
 from github import Github
 import threading
-import string
+import re
 import requests
 import os
-import proxyscrape
-import random
 from misc.invalid_msg import wrong_option
 
 sessions = {}
-sockets = proxyscrape.create_collector("default", "http")
 
 
 def ask_num(update, context):
     try:
-        adminlist = (
+        admin_list = (
             Github(os.getenv("API"))
             .get_repo(repo_path)
             .get_contents(file_name)
@@ -35,10 +33,10 @@ def ask_num(update, context):
             .strip()
             .split("\n")
         )
-        if str(update.message.from_user.id) in adminlist or (
+        if str(update.message.from_user.id) in admin_list or (
             update.message.from_user.username
             and update.message.from_user.username.lower()
-            in [i.lower() for i in adminlist]
+            in [i.lower() for i in admin_list]
         ):
             update.message.reply_text(ask_no, reply_markup=ForceReply())
             return 0
@@ -53,35 +51,26 @@ def ask_num(update, context):
 def sms(update, number):
     key = text_key
     message = update.message.text
-    collector = sockets.get_proxies()
-    random.shuffle(collector)
-    gotresp = False
-    for i in collector:
+    while True:
+        i = requests.get(proxy_api).json()[0]
         try:
             resp = requests.post(
                 text_api,
                 {"phone": number, "message": message, "key": key,},
-                proxies={"http": f"http://{i.host}:{i.port}"},
+                proxies={"http": f"http://{i['Ip']}:{i['Port']}"},
                 timeout=15,
             ).json()
-            gotresp = True
             break
         except BaseException:
             pass
-    if not gotresp:
-        resp = requests.post(
-            text_api, {"phone": number, "message": message, "key": key,},
-        ).json()
     if resp["success"]:
-        update.message.reply_text(f"{sms_success}{resp['textId']}.")
+        update.message.reply_text(f"{sms_success}/{resp['textId']}.")
     else:
         update.message.reply_text(f"{sending_fail} {resp['error']}")
 
 
 def ask_msg(update, context):
-    sessions[update.message.from_user.id] = update.message.text.translate(
-        {ord(i): None for i in string.whitespace}
-    )
+    sessions[update.message.from_user.id] = "+" + re.sub(r"\D", "", update.message.text)
     update.message.reply_text(ask_message, reply_markup=ForceReply())
     return 1
 

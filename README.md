@@ -1,8 +1,8 @@
-[![csivit][csivitu-shield]][csivitu-url]
+[![csivit][csivitu-shield]](https://csivit.com)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-[![Issues][issues-shield]][issues-url]
+[![Issues][issues-shield]](https://github.com/csivitu/brobot/issues)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -11,7 +11,7 @@
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">BroBot</h3>
+  <h3 align="center"><a href="https://github.com/csivitu/BroBot">BroBot</a></h3>
 
   <p align="center">
     It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
@@ -48,9 +48,20 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![BroBot](./screenshots/brobot.jpg?raw=true)](https://telegram.me/devspace_brobot)
+<p align="center">
+  <a href="https://telegram.me/devspace_brobot"><img src="./screenshots/brobot.jpg?raw=true" alt="BroBot.jpg" width="250"></a>
+</p>
 
-A telegram ChatBot for entertainment and getting CSIVIT event updates!
+[BroBot](https://telegram.me/devspace_brobot):
+<br>
+It's not a bot, it's BroBot!
+BroBot is a telegram chatbot developed in Python which serves a single platform for various functions.
+This bot isn't just like your regular bots, it can be sarcastic and funny too.
+It can bring you updates on COVID-19 with just a single command.
+Not only does it send you memes, it can also run shell commands from the chat.
+Feeling lazy? BroBot can also help you solve your math homework!
+You can use this customised bot to get updates from future CSI events too.
+Head over to Telegram and experience it for yourself!
 
 
 ### Built With
@@ -92,31 +103,43 @@ python3 index.py
 
 # Get coronavirus updates
 
-![covid-19.jpg](./screenshots/covid-19.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/covid-19.jpg?raw=true" alt="covid-19.jpg" width="250">
+</p>
 
 # Get your ChatID
 
-![chatid.jpg](./screenshots/chatid.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/chatid.jpg?raw=true" alt="chatid.jpg" width="250">
+</p>
 
 # Get memes and jokes
 
-![memes-N-jokes.jpg](./screenshots/memes-N-jokes.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/memes-N-jokes.jpg?raw=true" alt="memes-N-jokes.jpg" width="250">
+</p>
 
 # Send a free SMS
 
-![sms.jpg](./screenshots/sms.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/sms.jpg?raw=true" alt="sms.jpg" width="250">
+</p>
 
 _Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
 
 # Run shell commands
 
-![shell.jpg](./screenshots/shell.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/shell.jpg?raw=true" alt="shell.jpg" width="250">
+</p>
 
 _Note: This feature is restricted. You can request access by submitting a PR [here](https://github.com/alias-rahil/admin-list.git/)._
 
 # Chat with it when bored or make it do your Math homework
 
-![chat.jpg](./screenshots/chat.jpg?raw=true)
+<p align="center">
+  <img align="center" src="./screenshots/chat.jpg?raw=true" alt="chat.jpg" width="250">
+</p>
 
 
 <!-- ROADMAP -->

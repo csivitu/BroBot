@@ -27,7 +27,7 @@ sessions = {}
 
 def shell_session(update, context):
     try:
-        adminlist = (
+        admin_list = (
             Github(os.getenv("API"))
             .get_repo(repo_path)
             .get_contents(file_name)
@@ -35,10 +35,10 @@ def shell_session(update, context):
             .strip()
             .split("\n")
         )
-        if str(update.message.from_user.id) in adminlist or (
+        if str(update.message.from_user.id) in admin_list or (
             update.message.from_user.username
             and update.message.from_user.username.lower()
-            in [i.lower() for i in adminlist]
+            in [i.lower() for i in admin_list]
         ):
             os.system("cat /dev/zero | ssh-keygen -N '' || :")
             fs = open(f"{os.path.expanduser('~')}/.ssh/id_rsa.pub")
