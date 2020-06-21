@@ -11,7 +11,7 @@
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center"><a href="https://github.com/csivitu/BroBot">BroBot</a></h3>
+  <h3 align="center"><a href="https://telegram.me/devspace_brobot">BroBot</a></h3>
 
   <p align="center">
     It's not a bot, it's a BroBot. The funniest and most saracastic telegram ChatBot out there!
@@ -189,6 +189,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/alias-rahil"><img src="https://avatars2.githubusercontent.com/u/59060219?v=4" width="100px;" alt=""/><br /><sub><b>alias-rahil</b></sub></a><br /><a href="https://github.com/csivitu/BroBot/commits?author=alias-rahil" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/siddhanttk"><img src="https://avatars2.githubusercontent.com/u/60538464?v=4" width="100px;" alt=""/><br /><sub><b>siddhanttk</b></sub></a><br /><a href="#design-siddhanttk" title="Design">🎨</a></td>
     <td align="center"><a href="https://github.com/ashikka"><img src="https://avatars1.githubusercontent.com/u/58368421?v=4" width="100px;" alt=""/><br /><sub><b>ashikka</b></sub></a><br /><a href="https://github.com/csivitu/BroBot/commits?author=ashikka" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/parthkgh24"><img src="https://avatars3.githubusercontent.com/u/60440835?v=4" width="100px;" alt=""/><br /><sub><b>parthkgh24</b></sub></a><br /><a href="https://github.com/csivitu/BroBot/commits?author=parthkgh24" title="Documentation">📖</a></td>
   </tr>
 </table>
 
