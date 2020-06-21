@@ -13,8 +13,6 @@ def joke(update, context):
                 message = response["joke"]
             except BaseException:
                 message = response["value"]["joke"]
-                message = message.replace("\\'", "'")
-                message = message.replace('\\"', '"')
         else:
             try:
                 message = response["setup"] + "\n\n" + response["delivery"]
